@@ -42,7 +42,10 @@ CREATE TABLE Articulo (
     idArticulo INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     estado VARCHAR(20) DEFAULT 'Disponible',
-    cantidadTotal INT NOT NULL,
+    cantidadTotal INT NOT NULL DEFAULT 0,
+    cantidadDisponible INT NOT NULL DEFAULT 0,
+    cantidadEnUso INT NOT NULL DEFAULT 0,
+    cantidadDanada INT NOT NULL DEFAULT 0,
     costoRenta DECIMAL(10,2) NOT NULL
 );
 
@@ -78,6 +81,7 @@ CREATE TABLE Accesorio (
 CREATE TABLE Pedido (
     idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idCliente INT,
+    fechaPedido DATE,
     fechaEvento DATE NOT NULL,
     fechaEntrega DATE,
     fechaDevolucion DATE,
@@ -96,6 +100,16 @@ CREATE TABLE DetallePedido (
         ON DELETE CASCADE,
     FOREIGN KEY (idArticulo) REFERENCES Articulo(idArticulo)
         ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS DetallePedidoPaquete (
+    idPedido INT NOT NULL,
+    idPaquete INT NOT NULL,
+    cantidad INT NOT NULL DEFAULT 1,
+    PRIMARY KEY (idPedido, idPaquete),
+    INDEX (idPaquete),
+    CONSTRAINT FK_DetallePedidoPaquete_Pedido FOREIGN KEY (idPedido) REFERENCES Pedido(idPedido) ON DELETE CASCADE,
+    CONSTRAINT FK_DetallePedidoPaquete_Paquete FOREIGN KEY (idPaquete) REFERENCES Paquete(idPaquete) ON DELETE CASCADE
 );
 
 
@@ -138,4 +152,11 @@ CREATE TABLE PedidoPaquete (
         ON DELETE CASCADE,
     FOREIGN KEY (idPaquete) REFERENCES Paquete(idPaquete)
         ON DELETE CASCADE
+);
+
+CREATE TABLE Usuario (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombreUsuario VARCHAR(50) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL,
+    rol VARCHAR(20) DEFAULT 'admin'
 );
