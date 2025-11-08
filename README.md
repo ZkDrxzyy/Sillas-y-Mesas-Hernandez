@@ -6,7 +6,4 @@ Además, la falta de un sistema centralizado hacía complicado llevar un histori
 Por ello, se identificó la necesidad de desarrollar una base de datos estructurada y una página web de gestión que automatizara los procesos más importantes del negocio.
 
 
-
-python -m venv venv
-.\venv\Scripts\Activate
-pip install flask
+TS1.rar SQL Injection
