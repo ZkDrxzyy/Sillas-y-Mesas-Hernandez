@@ -4,6 +4,3 @@ En el negocio familiar Sillas y Mesas Hernández, dedicado a la renta de mobilia
 Esto generaba dificultades para controlar la disponibilidad de los artículos, confusión con los pagos pendientes, duplicidad de registros y pérdida de información de clientes.
 Además, la falta de un sistema centralizado hacía complicado llevar un historial de rentas, calcular los costos totales y verificar qué artículos estaban disponibles o en reparación.
 Por ello, se identificó la necesidad de desarrollar una base de datos estructurada y una página web de gestión que automatizara los procesos más importantes del negocio.
-
-
-TS1.rar SQL Injection
